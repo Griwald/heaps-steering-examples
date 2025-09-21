@@ -8,7 +8,8 @@ class Seek extends hxd.App {
 		mouseGraphics.drawCircle(0, 0, 10);
 		mouseGraphics.endFill();
 
-		vehicle = new Vehicle(s2d.width / 2., s2d.height / 2., s2d);
+		var config = { radius : 12, maxSpeed : 8, maxForce : 0.2 };
+		vehicle = new Vehicle(config, s2d.width / 2, s2d.height / 2, s2d);
 	}
 
 	override function update(dt : Float) {

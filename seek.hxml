@@ -1,6 +1,3 @@
--cp src
--lib heaps
--lib hlsdl
+common.hxml
 -hl seek.hl
 -main Seek
--D windowSize=1366x768
