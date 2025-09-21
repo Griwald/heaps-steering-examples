@@ -2,7 +2,7 @@ class Extensions {
 	inline public static function limit( v : h2d.col.Point, max : Float ) {
 		var magSq = v.lengthSq();
 		if (magSq > max * max && magSq > hxd.Math.EPSILON2)
-			v.scale(max / Math.sqrt(magSq));
+			v.scale(max / hxd.Math.sqrt(magSq));
 		return v;
 	}
 

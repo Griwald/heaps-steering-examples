@@ -24,7 +24,8 @@ class Vehicle extends h2d.Object {
 		acceleration.set(0, 0);
 
 		setPosition(position.x, position.y);
-		rotation = Math.atan2(velocity.y, velocity.x);
+		if( velocity.lengthSq() > hxd.Math.EPSILON2 )
+			rotation = hxd.Math.atan2(velocity.y, velocity.x);
 	}
 
 	public function applyForce(force) {
