@@ -8,7 +8,7 @@ class Seek extends hxd.App {
 		mouseGraphics.drawCircle(0, 0, 10);
 		mouseGraphics.endFill();
 
-		var config = {radius: 12, maxSpeed: 8, maxForce: 0.2};
+		var config = {radius: 12., maxSpeed: 8., maxForce: 0.2};
 		vehicle = new Vehicle(config, s2d.width / 2, s2d.height / 2, s2d);
 	}
 
@@ -16,7 +16,8 @@ class Seek extends hxd.App {
 		var mouse = new h2d.col.Point(s2d.mouseX, s2d.mouseY);
 		mouseGraphics.setPosition(mouse.x, mouse.y);
 
-		vehicle.seek(mouse);
+		var steer = vehicle.seek(mouse);
+		vehicle.applyForce(steer);
 		vehicle.update();
 	}
 
