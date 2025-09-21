@@ -9,7 +9,7 @@ class Separation extends hxd.App {
 		}
 	}
 
-	override function update(dt : Float) {
+	override function update(dt:Float) {
 		for (v in vehicles) {
 			v.separate(vehicles);
 			v.update();

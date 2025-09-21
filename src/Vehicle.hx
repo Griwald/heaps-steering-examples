@@ -1,17 +1,17 @@
 typedef Config = {
-	var radius : Float;
-	var maxSpeed : Float;
-	var maxForce : Float;
+	var radius:Float;
+	var maxSpeed:Float;
+	var maxForce:Float;
 }
 
 class Vehicle extends h2d.Object {
-	var position : h2d.col.Point;
-	var velocity : h2d.col.Point;
-	var acceleration : h2d.col.Point;
+	var position:h2d.col.Point;
+	var velocity:h2d.col.Point;
+	var acceleration:h2d.col.Point;
 
-	var r : Float;
-	var maxSpeed : Float;
-	var maxForce : Float;
+	var r:Float;
+	var maxSpeed:Float;
+	var maxForce:Float;
 
 	public function new(config, x, y, ?parent) {
 		r = config.radius;
@@ -35,7 +35,7 @@ class Vehicle extends h2d.Object {
 		acceleration.set(0, 0);
 
 		setPosition(position.x, position.y);
-		if( velocity.lengthSq() > hxd.Math.EPSILON2 )
+		if (velocity.lengthSq() > hxd.Math.EPSILON2)
 			rotation = hxd.Math.atan2(velocity.y, velocity.x);
 	}
 
@@ -43,7 +43,7 @@ class Vehicle extends h2d.Object {
 		acceleration += force;
 	}
 
-	public function seek(target : h2d.col.Point) {
+	public function seek(target:h2d.col.Point) {
 		var desired = target - position;
 		desired.setLength(maxSpeed);
 		var steer = desired - velocity;
@@ -51,7 +51,7 @@ class Vehicle extends h2d.Object {
 		applyForce(steer);
 	}
 
-	public function separate(vehicles : Array<Vehicle>) {
+	public function separate(vehicles:Array<Vehicle>) {
 		final desiredSep = r * 4;
 		var sum = new h2d.col.Point(0, 0);
 		var count = 0;
@@ -73,10 +73,14 @@ class Vehicle extends h2d.Object {
 	}
 
 	public function borders(width, height) {
-		if (position.x < -r) position.x = width + r;
-		if (position.y < -r) position.y = height + r;
-		if (position.x > width + r) position.x = -r;
-		if (position.y > height + r) position.y = -r;
+		if (position.x < -r)
+			position.x = width + r;
+		if (position.y < -r)
+			position.y = height + r;
+		if (position.x > width + r)
+			position.x = -r;
+		if (position.y > height + r)
+			position.y = -r;
 	}
 
 	function createGraphics() {
